@@ -26,4 +26,6 @@
 1. this need to be included in kube files process.env.<variable>
 2. loggers proper for each logs of repl apigateway and course =>  port, mapping, act etc 
 
+---
+
 
