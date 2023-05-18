@@ -17,15 +17,13 @@ logger.info(`environmentVariables REPL_PORT: ${process.env.REPL_PORT}`);
 
 process.on('uncaughtException', (error) => {
 
-    logger.error('UNCAUGHT EXCEPTION');
-    logger.error(error);
+    logger.error('UNCAUGHT EXCEPTION',error);
 
 });
 
 process.on('unhandledRejection', (error) => {
 
-    logger.error('UNHANDLED REJECTION');
-    logger.error(error);
+    logger.error('UNHANDLED REJECTION',error);
 
 });
 
@@ -46,6 +44,7 @@ Seneca({
     .test('print')
     .use("monitor")
     .use("mesh",{
+        pin: 'role:webapi,format:exposed',
         bases: BASES,
         host: process.env.MESH_HOST,
     })

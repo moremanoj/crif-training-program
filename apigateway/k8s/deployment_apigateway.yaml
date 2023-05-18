@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: webapi
-        image: manojdockers/webapi:latest
+        image: manojdockers/webapi:v1
         env:
         - name: BASES
           value: "localhost:39000,<repl_pod_ip>:39000"
