@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: repl
-        image: manojdockers/repl:latest
+        image: manojdockers/repl:v1
         env:
         - name: BASES
           value: "localhost:39000,<repl_pod_ip>:39000"
