@@ -1,0 +1,4 @@
+{
+    "BASES": "localhost:39000",
+    "REPL_PORT":10030
+}

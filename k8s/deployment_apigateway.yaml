@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      srv: webapi
+  template:
+    metadata:
+      labels:
+        srv: webapi
+    spec:
+      containers:
+      - name: webapi
+        image: manojdockers/webapi:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
+        - containerPort: 10000

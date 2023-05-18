@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: repl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      srv: repl
+  template:
+    metadata:
+      labels:
+        srv: repl
+    spec:
+      containers:
+      - name: repl
+        image: manojdockers/repl:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 10000
