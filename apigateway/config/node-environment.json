@@ -1,6 +1,10 @@
 {
     "BASES": "repl.default.svc.cluster.local",
+    "ENVIRONMENT": "production",
     "REPL_POD_HOST": "repl.default.svc.cluster.local",
     "PORT":8000,
-    "REPL_PORT": 10020
+    "REPL_PORT": 10020,
+    "WINSTON_FILE_LOG_LEVEL": "debug",
+    "WINSTON_CONSOLE_LOG_LEVEL": "debug",
+    "WINSTON_LABEL": "web-server"
 }

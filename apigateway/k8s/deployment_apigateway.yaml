@@ -17,11 +17,11 @@ spec:
         image: manojdockers/webapi:v1
         env:
         - name: BASES
-          value: "localhost:39000,<repl_pod_ip>:39000"
+          value: "10.244.0.3:39000"
         - name: MESH_HOST
           value: "@eth0"
         - name: REPL_PORT
-          value: 10000
+          value: "10000"
         resources:
           limits:
             memory: "128Mi"

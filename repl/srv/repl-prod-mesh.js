@@ -28,7 +28,7 @@ Seneca({tag: 'repl'})
   // p-2-p service discovery
   .use('mesh', {
     isbase: true,
-    port: process.env.MESH_PORT,
+    port: process.env.MESH_PORT
   })
 
   .use('entity')

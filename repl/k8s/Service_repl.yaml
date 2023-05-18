@@ -12,3 +12,9 @@ spec:
     name: repl
     targetPort: 10000
     nodePort: 31553
+  - port: 39000
+    protocol: UDP
+    name: mesh
+    targetPort: 39000 
+    nodePort: 31554
+

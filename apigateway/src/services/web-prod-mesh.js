@@ -17,33 +17,34 @@ logger.info(`environmentVariables REPL_PORT: ${process.env.REPL_PORT}`);
 
 process.on('uncaughtException', (error) => {
 
-    logger.error('UNCAUGHT EXCEPTION',error);
+    logger.error('UNCAUGHT EXCEPTION', error);
 
 });
 
 process.on('unhandledRejection', (error) => {
 
-    logger.error('UNHANDLED REJECTION',error);
+    logger.error('UNHANDLED REJECTION', error);
 
 });
 
-Seneca({ 
+Seneca({
     tag: 'web',
     log: {
         map: [
-          {
-            level: "all",
-            handler: function () {
+            {
+                level: "all",
+                handler: function () {
 
-              logger.log(arguments[1], Array.prototype.join.call(arguments, "\t"));
-            
-},
-          },
-        ]}
-    })
+                    logger.log(arguments[1], Array.prototype.join.call(arguments, "\t"));
+
+                },
+            },
+        ]
+    }
+})
     .test('print')
     .use("monitor")
-    .use("mesh",{
+    .use("mesh", {
         pin: 'role:webapi,format:exposed',
         bases: BASES,
         host: process.env.MESH_HOST,
@@ -54,11 +55,11 @@ Seneca({
     .ready(function () {
 
         // Build the frontend server using the hapi framework.
-         webServer({ seneca: this });
+        webServer({ seneca: this });
 
         this.log.info("server is started");
-    
-});
+
+    });
 
 
 

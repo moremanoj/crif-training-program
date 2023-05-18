@@ -1,13 +1,15 @@
 # Start from a Node.js 16 (LTS) image 
 FROM node:16
 
-LABEL key="value"
+LABEL project="seneca-training-apigateway"
 
 # Specify the directory inside the image in which all commands will run 
 WORKDIR /usr/src/app
 
 # Copy package files and install dependencies 
-COPY dist/* ./
+COPY ../dist ./
+
+RUN npm install
 
 EXPOSE 8000
 
