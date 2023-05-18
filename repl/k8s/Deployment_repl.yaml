@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: repl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      srv: repl
+  template:
+    metadata:
+      labels:
+        srv: repl
+    spec:
+      containers:
+      - name: repl
+        image: manojdockers/repl:latest
+        env:
+        - name: BASES
+          value: "localhost:39000,<repl_pod_ip>:39000"
+        - name: MESH_HOST
+          value: "@eth0"
+        - name: REPL_PORT
+          value: 10000
+        - name: MESH_PORT
+          value: 39000
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 10000
