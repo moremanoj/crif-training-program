@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: webapi
-        image: manojdockers/webapi:v1
+        image: vijaysherekar/seneca-apigateway:latest
         env:
         - name: BASES
           value: "10.244.0.3:39000"

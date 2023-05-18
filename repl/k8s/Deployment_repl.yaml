@@ -14,14 +14,16 @@ spec:
     spec:
       containers:
       - name: repl
-        image: manojdockers/repl:v1
+        image: vijaysherekar/seneca-repl:latest
         env:
         - name: MESH_HOST
           value: "@eth0"
-        - name: REPL_PORT
-          value: "10000"
         - name: MESH_PORT
           value: "39000"
+        - name: REPL_HOST
+          value: "0.0.0.0"
+        - name: REPL_PORT
+          value: "10000"
         resources:
           limits:
             memory: "128Mi"

@@ -19,6 +19,7 @@ process.on('unhandledRejection', (error) => {
 logger.info(`environmentVariables BASES : ${process.env.BASES}`);
 logger.info(`environmentVariables MESH_HOST: ${process.env.MESH_HOST}`);
 logger.info(`environmentVariables REPL_PORT: ${process.env.REPL_PORT}`);
+logger.info(`environmentVariables REPL_HOST: ${process.env.REPL_HOST}`);
 logger.info(`environmentVariables MESH_PORT: ${process.env.MESH_PORT}`);
 
 Seneca({tag: 'repl'})
@@ -28,12 +29,20 @@ Seneca({tag: 'repl'})
   // p-2-p service discovery
   .use('mesh', {
     isbase: true,
-    port: process.env.MESH_PORT
+    host:process.env.MESH_HOST,
+    port: process.env.MESH_PORT,
+    sneeze: {silent:false},
+    discover: {
+      registry: {
+        active: true
+      }
+    }
   })
 
   .use('entity')
 
   .use('seneca-repl', {
+    host:process.env.REPL_HOST,
     port: process.env.REPL_PORT
   })
 
