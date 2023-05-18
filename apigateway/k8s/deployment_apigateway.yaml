@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      srv: webapi
+  template:
+    metadata:
+      labels:
+        srv: webapi
+    spec:
+      containers:
+      - name: webapi
+        image: manojdockers/webapi:latest
+        env:
+        - name: BASES
+          value: "localhost:39000,<repl_pod_ip>:39000"
+        - name: MESH_HOST
+          value: "@eth0"
+        - name: REPL_PORT
+          value: 10000
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
+        - containerPort: 10000

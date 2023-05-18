@@ -1,0 +1,6 @@
+{
+    "BASES": "localhost:39000",
+    "REPL_POD_HOST": "localhost",
+    "PORT":8000,
+    "REPL_PORT": 10020
+}

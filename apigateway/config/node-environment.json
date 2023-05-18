@@ -1,0 +1,6 @@
+{
+    "BASES": "repl.default.svc.cluster.local",
+    "REPL_POD_HOST": "repl.default.svc.cluster.local",
+    "PORT":8000,
+    "REPL_PORT": 10020
+}
