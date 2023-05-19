@@ -1,9 +1,9 @@
 
 import express from "express";
 import cors from "cors";
-import { logger } from '../logger';
-import  * as responseHandler from '../responseHandler';
-import {CONSTANT} from '../constants';
+import { logger } from './logger';
+import  * as responseHandler from './responseHandler';
+import {CONSTANT} from './constants';
 
 export default function (options) {
 

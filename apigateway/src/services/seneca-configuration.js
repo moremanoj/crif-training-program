@@ -1,9 +1,10 @@
 import Seneca from 'seneca';
-import webServer from "../express-configuration/web-server";
+import webServer from "../web-server";
 import loggerObject from './../utility/logger';
 import environmentConfiguration from "./../environment/index";
 
 const senecaConfiguration = () => {
+
     const logger = loggerObject.getLoggerInstance();
     const ENV_DATA = environmentConfiguration.getConfigurationDetails();
 
@@ -42,10 +43,12 @@ const senecaConfiguration = () => {
                 });
 
         });
-    }
+    
+}
     return {
         init,
-    }
+    };
+
 };
 
 export default senecaConfiguration();

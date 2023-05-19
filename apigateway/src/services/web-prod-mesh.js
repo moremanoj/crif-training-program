@@ -1,7 +1,7 @@
 import Seneca from 'seneca';
 import webServer from "../web-server";
 import { logger } from '../logger';
-const BASES = process.env.BASES.split(',').trim();
+const BASES = process.env.BASES.split(',');
 
 
 /**
@@ -45,7 +45,6 @@ Seneca({
     .test('print')
     .use("monitor")
     .use("mesh", {
-        pin: 'role:webapi,format:exposed',
         bases: BASES,
         host: process.env.MESH_HOST,
     })

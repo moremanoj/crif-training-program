@@ -26,16 +26,26 @@ Seneca({tag: 'repl'})
   .use('monitor', {collect: true})
 
   // p-2-p service discovery
-  .use('mesh', {
-    isbase: true,
-    port: process.env.MESH_PORT
-  })
-
-  .use('entity')
-
-  .use('seneca-repl', {
-    port: process.env.REPL_PORT
-  })
+    // p-2-p service discovery
+    .use('mesh', {
+      isbase: true,
+      host:process.env.MESH_HOST,
+      port: process.env.MESH_PORT,
+      sneeze: {silent:false},
+      discover: {
+        registry: {
+          active: true
+        }
+      }
+    })
+  
+    .use('entity')
+  
+    .use('seneca-repl', {
+      host:process.env.REPL_HOST,
+      port: process.env.REPL_PORT
+    })
+  
 
   .ready(function () {
 
