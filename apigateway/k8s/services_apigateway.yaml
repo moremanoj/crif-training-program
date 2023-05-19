@@ -21,4 +21,4 @@ spec:
     port: 39000
     protocol: TCP
     targetPort: 39000
-    nodePort: 31300
+    nodePort: 31300 
