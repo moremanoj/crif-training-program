@@ -17,7 +17,7 @@ spec:
         image: manojdockers/webapi:v1
         env:
         - name: BASES
-          value: "10.244.0.3:39000"
+          value: "10.1.0.18:39000"
         - name: MESH_HOST
           value: "@eth0"
         - name: REPL_PORT

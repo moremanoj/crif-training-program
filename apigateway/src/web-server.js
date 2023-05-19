@@ -2,7 +2,7 @@
 import express from "express";
 import cors from "cors";
 import { logger } from './logger';
-import  * as responseHandler from './responseHandler';
+// import  * as responseHandler from './responseHandler';
 import {CONSTANT} from './constants';
 
 export default function (options) {
@@ -37,81 +37,86 @@ export default function (options) {
     );
 
 
-    const seneca = options.seneca;
+    // const seneca = options.seneca;
 
     // course
     app.get('/api/courses', async (request, response, next) => {
 
-        const result = await seneca.actAsync('role:course,cmd:list', responseHandler.getCourse);
-        response.json(result);
-
-    });
-
-
-    app.post('/api/courses',async (request, response, next) => {
-
-        // console.log(request.body);
-        const result = await seneca.actAsync('role:course,cmd:insert', { body: request.body }, responseHandler.addCourse);
-        response.json(result);
-    
-    });
-
-    app.post('/api/courses/:id',async (request, response, next) => {
-
-        // console.log(request.body);
-        const body = {
-            ...request.body,
-            ...request.params
+        const result = {
+            items: [],
+            message: "hello here is the response ",
+            success: true
         };
-        const result = await seneca.actAsync('role:course,cmd:update', { body: body }, responseHandler.updateCourse);
+        // const result = await seneca.actAsync('role:course,cmd:list', responseHandler.getCourse);
         response.json(result);
 
     });
 
-    app.delete('/api/courses/:id',async (request, response, next) => {
 
-        console.log(request.params);
-        const result = await seneca.actAsync('role:course,cmd:delete', { body: request.params }, responseHandler.deleteCourse);
-        response.json(result);
+    // app.post('/api/courses',async (request, response, next) => {
 
-    });
+    //     // console.log(request.body);
+    //     const result = await seneca.actAsync('role:course,cmd:insert', { body: request.body }, responseHandler.addCourse);
+    //     response.json(result);
+    
+    // });
+
+    // app.post('/api/courses/:id',async (request, response, next) => {
+
+    //     // console.log(request.body);
+    //     const body = {
+    //         ...request.body,
+    //         ...request.params
+    //     };
+    //     const result = await seneca.actAsync('role:course,cmd:update', { body: body }, responseHandler.updateCourse);
+    //     response.json(result);
+
+    // });
+
+    // app.delete('/api/courses/:id',async (request, response, next) => {
+
+    //     console.log(request.params);
+    //     const result = await seneca.actAsync('role:course,cmd:delete', { body: request.params }, responseHandler.deleteCourse);
+    //     response.json(result);
+
+    // });
     
 
-    // technology 
-    app.get('/api/technology', async (request, response, next) => {
+    // // technology 
+    // app.get('/api/technology', async (request, response, next) => {
 
-        const result = await seneca.actAsync('role:tech,cmd:list', responseHandler.getCourse);
-        response.json(result);
+    //     const result = await seneca.actAsync('role:tech,cmd:list', responseHandler.getCourse);
+    //     response.json(result);
 
-    });
+    // });
 
-    app.post('/api/technology',async (request, response, next) => {
+    // app.post('/api/technology',async (request, response, next) => {
 
-        // console.log(request.body);
-        const result = await seneca.actAsync('role:tech,cmd:insert', { body: request.body }, responseHandler.addCourse);
-        response.json(result);
+    //     // console.log(request.body);
+    //     const result = await seneca.actAsync('role:tech,cmd:insert', { body: request.body }, responseHandler.addCourse);
+    //     response.json(result);
     
-    });
+    // });
 
-    app.post('/api/technology/:id',async (request, response, next) => {
+    // app.post('/api/technology/:id',async (request, response, next) => {
 
-        // console.log(request.body);
-        const body = {
-            ...request.body,
-            ...request.params
-        };
-        const result = await seneca.actAsync('role:tech,cmd:update', { body: body }, responseHandler.updateCourse);
-        response.json(result);
+    //     // console.log(request.body);
+    //     const body = {
+    //         ...request.body,
+    //         ...request.params
+    //     };
+    //     const result = await seneca.actAsync('role:tech,cmd:update', { body: body }, responseHandler.updateCourse);
+    //     response.json(result);
 
-    });
+    // });
 
-    app.delete('/api/technology/:id',async (request, response, next) => {
+    // app.delete('/api/technology/:id',async (request, response, next) => {
 
-        console.log(request.params);
-        const result = await seneca.actAsync('role:tech,cmd:delete', { body: request.params }, responseHandler.deleteCourse);
-        response.json(result);
+    //     console.log(request.params);
+    //     const result = await seneca.actAsync('role:tech,cmd:delete', { body: request.params }, responseHandler.deleteCourse);
+    //     response.json(result);
 
-    });
+    // });
     
     var server = app.listen(CONSTANT.PORT , () => {
 
@@ -127,8 +132,11 @@ export default function (options) {
 
         });
         logger.info(`Example app listening `);
+        console.log("Example app listening ");
+
         var host = server.address().address;
         var port = server.address().port;
+        console.log("Server is running on PORT: ", CONSTANT.PORT);
         logger.info(`Example app listening at http:\\${host}:${port}`);
 
     });

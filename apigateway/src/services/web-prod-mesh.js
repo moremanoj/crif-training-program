@@ -48,13 +48,16 @@ Seneca({
         bases: BASES,
         host: process.env.MESH_HOST,
     })
-    .use('seneca-as-promised')
+    // .use('seneca-as-promised')
     .use('seneca-repl', { port: process.env.REPL_PORT })
 
     .ready(function () {
 
+        console.log("Starting the Server: ");
         // Build the frontend server using the hapi framework.
         webServer({ seneca: this });
+        
+        console.log("Server is Started !!! ");
 
         this.log.info("server is started");
 

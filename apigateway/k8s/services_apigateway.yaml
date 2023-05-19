@@ -4,7 +4,7 @@ metadata:
   name: webapi
 spec:
   selector:
-    srv: webapi
+    app.kubernetes.io/name: webapi
   type: NodePort
   ports:
   - name: repl
